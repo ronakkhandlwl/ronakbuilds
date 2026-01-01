@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ronak Khandelwal | Software Engineer</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+    :root {
+      --bg-light: #faf7f4;
+      --bg-surface: #ffffff;
+      --primary-dark: #2f2a25;
+      --accent: #8b5e34;
+      --accent-hover: #734c2a;
+      --text-muted: #6c6c6c;
+      --border-color: #e5e0db;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--primary-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, .navbar-brand {
+      font-family: 'Outfit', sans-serif;
+      color: var(--primary-dark);
+    }
+
+    a { text-decoration: none; }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* --- Buttons --- */
+    .btn-custom {
+      background-color: var(--primary-dark);
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: 1px solid var(--primary-dark);
+      display: inline-block;
+    }
+    .btn-custom:hover {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-custom {
+      background-color: transparent;
+      color: var(--primary-dark);
+      border: 1px solid var(--primary-dark);
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    .btn-outline-custom:hover {
+      background-color: var(--primary-dark);
+      color: #fff;
+    }
+
+    /* --- Navbar --- */
+    .navbar {
+      background: rgba(250, 247, 244, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 16px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: -0.5px;
+      color: var(--primary-dark);
+    }
+    .nav-link {
+      color: var(--primary-dark);
+      font-weight: 500;
+      margin-left: 20px;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover { 
+      color: var(--accent); 
+    }
+
+    .navbar-toggler {
+      border: none;
+      padding: 8px;
+    }
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
+
+    /* --- Sections --- */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+      font-size: 2rem;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 3px;
+      background: var(--accent);
+      margin-top: 8px;
+    }
+
+    /* --- Cards --- */
+    .feature-card {
+      background: var(--bg-surface);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(139, 94, 52, 0.1);
+      border-color: var(--accent);
+    }
+
+    /* --- Skills Tags --- */
+    .skill-tag {
+      background: rgba(139, 94, 52, 0.1);
+      color: var(--accent);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    /* --- Timeline (Experience) --- */
+    .timeline-item {
+      border-left: 2px solid var(--border-color);
+      padding-left: 30px;
+      position: relative;
+      margin-bottom: 40px;
+    }
+    .timeline-item::before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: absolute;
+      left: -7px;
+      top: 5px;
+    }
+    .timeline-date {
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 5px;
+      display: block;
+    }
+    
+    /* --- Achievements --- */
+    .achievement-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .achievement-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(139, 94, 52, 0.1);
+      color: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+
+    /* --- Hero Section --- */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 100px;
+      padding-bottom: 60px;
+    }
+
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .stat-item {
+      flex: 0 1 auto;
+    }
+
+    .stat-item h2 {
+      font-size: 2rem;
+      margin-bottom: 0;
+    }
+
+    /* --- Footer --- */
+    footer {
+      border-top: 1px solid var(--border-color);
+      margin-top: 80px;
+      padding: 40px 0;
+      text-align: center;
+    }
+    .social-icon {
+      font-size: 1.5rem;
+      color: var(--primary-dark);
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+    .social-icon:hover { 
+      color: var(--accent); 
+    }
+
+    /* ============================================
+       RESPONSIVE STYLES
+       ============================================ */
+
+    /* Large devices (desktops, 992px and up) */
+    @media (max-width: 1199.98px) {
+      .hero-section h1 {
+        font-size: 3rem;
+      }
+    }
+
+    /* Medium devices (tablets, 768px to 991px) */
+    @media (max-width: 991.98px) {
+      .navbar {
+        padding: 12px 0;
+      }
+
+      .nav-link {
+        margin-left: 0;
+        padding: 8px 0;
+      }
+
+      .navbar-nav {
+        padding-top: 1rem;
+      }
+
+      .navbar-nav .btn-custom {
+        margin-top: 1rem;
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero-section {
+        padding-top: 80px;
+        min-height: auto;
+      }
+
+      .hero-section h1 {
+        font-size: 2.5rem;
+      }
+
+      .stats-row {
+        gap: 1.5rem;
+        justify-content: space-between;
+      }
+
+      .stat-item h2 {
+        font-size: 1.75rem;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        font-size: 1.75rem;
+      }
+
+      .timeline-item {
+        padding-left: 25px;
+      }
+    }
+
+    /* Small devices (phones, 576px to 767px) */
+    @media (max-width: 767.98px) {
+      .hero-section h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+      }
+
+      .hero-section .lead {
+        font-size: 1rem;
+      }
+
+      .stats-row {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      section {
+        padding: 50px 0;
+      }
+
+      .feature-card {
+        padding: 1.5rem;
+      }
+
+      .btn-custom,
+      .btn-outline-custom {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+
+      footer h2 {
+        font-size: 1.5rem;
+      }
+
+      .timeline-item {
+        padding-left: 20px;
+        margin-bottom: 30px;
+      }
+
+      .timeline-item h4 {
+        font-size: 1.1rem;
+      }
+
+      .timeline-item h6 {
+        font-size: 0.95rem;
+      }
+    }
+
+    /* Extra small devices (phones, less than 576px) */
+    @media (max-width: 575.98px) {
+      .container {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .hero-section h1 {
+        font-size: 1.75rem;
+      }
+
+      .hero-section .display-3 {
+        font-size: 1.75rem;
+      }
+
+      .stat-item h2 {
+        font-size: 1.5rem;
+      }
+
+      .skill-tag {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+      }
+
+      .achievement-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+      }
+
+      .d-flex.gap-3 {
+        flex-direction: column;
+        gap: 0.75rem !important;
+      }
+
+      .d-flex.gap-3 .btn {
+        width: 100%;
+      }
+    }
+
+    /* Fix for button groups on mobile */
+    @media (max-width: 575.98px) {
+      .hero-section .btn-custom,
+      .hero-section .btn-outline-custom {
+        display: block;
+        width: 100%;
+        margin: 0 0 0.75rem 0;
+      }
+
+      .hero-section .btn-custom.me-3 {
+        margin-right: 0 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Ronak.</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+        <li class="nav-item"><a class="nav-link" href="https://blog.ronakbuilds.com" target="_blank">Blog <i class="fas fa-external-link-alt fa-xs"></i></a></li>
+        <li class="nav-item ms-lg-3">
+          <a href="assets/ronaks_resume.pdf" download class="btn btn-custom btn-sm">
+            <i class="fas fa-download me-2"></i>Resume
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="hero-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 text-center">
+        <span class="text-uppercase fw-bold" style="color: var(--accent); letter-spacing: 2px;">Software Engineer</span>
+        <h1 class="display-3 fw-bold my-4">Building scalable backends & <span style="color: var(--accent);">AI Agents</span>.</h1>
+        <p class="lead text-muted mb-5 mx-auto" style="max-width: 700px;">
+          I'm Ronak Khandelwal, an SDE architecting systems that serve thousands of users. 
+          Specializing in Python, Django, and modern AI tools like LangChain & n8n.
+        </p>
+        <div class="mb-5">
+          <a href="#projects" class="btn btn-custom me-3">View My Work</a>
+          <a href="https://blog.ronakbuilds.com" target="_blank" class="btn btn-outline-custom">Read My Blog</a>
+        </div>
+        
+        <div class="stats-row justify-content-center">
+          <div class="stat-item">
+            <h2 class="fw-bold mb-0">3+</h2>
+            <small class="text-muted">Years Exp.</small>
+          </div>
+          <div class="stat-item">
+            <h2 class="fw-bold mb-0">500+</h2>
+            <small class="text-muted">DSA Solved</small>
+          </div>
+          <div class="stat-item">
+            <h2 class="fw-bold mb-0">90%</h2>
+            <small class="text-muted">Optimization</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title mb-4">Tech Arsenal</h2>
+    <div class="row g-4">
+      
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card">
+          <h5 class="fw-bold mb-3"><i class="fas fa-code me-2" style="color:var(--accent)"></i>Languages</h5>
+          <div>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">C++ (STL)</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">HTML5/CSS3</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card">
+          <h5 class="fw-bold mb-3"><i class="fas fa-layer-group me-2" style="color:var(--accent)"></i>Frameworks</h5>
+          <div>
+            <span class="skill-tag">Django</span>
+            <span class="skill-tag">Flask</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Bootstrap</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card">
+          <h5 class="fw-bold mb-3"><i class="fas fa-server me-2" style="color:var(--accent)"></i>Data & Infra</h5>
+          <div>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Redis</span>
+            <span class="skill-tag">TimescaleDB</span>
+            <span class="skill-tag">Celery</span>
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Docker</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card">
+          <h5 class="fw-bold mb-3"><i class="fas fa-robot me-2" style="color:var(--accent)"></i>Tools & AI</h5>
+          <div>
+            <span class="skill-tag">LangChain</span>
+            <span class="skill-tag">LangGraph</span>
+            <span class="skill-tag">n8n</span>
+            <span class="skill-tag">Git/GitHub</span>
+            <span class="skill-tag">WebSockets</span>
+            <span class="skill-tag">Postman</span>
+            <span class="skill-tag">Jira</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="container">
+    <h2 class="section-title">Experience</h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        
+        <div class="timeline-item">
+          <span class="timeline-date">Jan 2023 - Present</span>
+          <h4 class="fw-bold">Software Development Engineer - I</h4>
+          <h6 class="text-muted mb-3">EventGraphia · Gurugram</h6>
+          <p class="text-muted">
+            Architected core internal systems including a CRM and Planner using Django & React. 
+            Built an AI-driven "Smart Assignment Engine" optimizing resource allocation based on 100+ parameters.
+            Led a team of 4 to reduce server load using Redis caching and queuing.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-date">Jun 2022 - Nov 2022</span>
+          <h4 class="fw-bold">Associate Software Developer</h4>
+          <h6 class="text-muted mb-3">CAW Studios · Hyderabad</h6>
+          <p class="text-muted">
+            Developed AI Chatbot solutions for Singapore-based clients. 
+            Designed auto-reply models and integrated third-party APIs to automate business workflows.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white" id="education">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <h2 class="section-title">Education</h2>
+        <div class="feature-card">
+          <h4 class="fw-bold">B.Tech in Computer Science</h4>
+          <p class="text-muted mb-1">Lovely Professional University, Phagwara</p>
+          <span class="badge bg-dark mb-3">2019 - 2023</span>
+          <h5 class="fw-bold" style="color: var(--accent);">CGPA: 8.26 / 10.0</h5>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <h2 class="section-title">Achievements</h2>
+        <div class="feature-card">
+          
+          <div class="achievement-item">
+            <div class="achievement-icon"><i class="fas fa-trophy"></i></div>
+            <div>
+              <strong class="d-block">Top 3% Coder</strong>
+              <span class="text-muted small">LeetCode Global Ranking</span>
+            </div>
+          </div>
+
+          <div class="achievement-item">
+            <div class="achievement-icon"><i class="fas fa-star"></i></div>
+            <div>
+              <strong class="d-block">4 Star Coder</strong>
+              <span class="text-muted small">CodeChef</span>
+            </div>
+          </div>
+
+          <div class="achievement-item">
+            <div class="achievement-icon"><i class="fas fa-medal"></i></div>
+            <div>
+              <strong class="d-block">Rank 9 / 500+</strong>
+              <span class="text-muted small">GeeksforGeeks Coders Combat</span>
+            </div>
+          </div>
+
+          <div class="achievement-item">
+            <div class="achievement-icon"><i class="fas fa-award"></i></div>
+            <div>
+              <strong class="d-block">Rank 418 / 14k+</strong>
+              <span class="text-muted small">Newton's Grand Coding Contest</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-end mb-5 flex-wrap">
+      <h2 class="section-title mb-3 mb-md-0">Featured Projects</h2>
+      <a href="https://github.com/ronakkhandlwl" target="_blank" class="text-muted">View Github <i class="fas fa-arrow-right ms-1"></i></a>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="feature-card">
+          <div class="d-flex justify-content-between mb-3">
+            <h4 class="fw-bold">Internal CRM & Planner</h4>
+            <i class="fas fa-layer-group fa-lg" style="color: var(--accent);"></i>
+          </div>
+          <p class="text-muted mb-4">
+            A centralized dashboard for tracking booking stages and internal notes, built at EventGraphia. Streamlined operations for the sales and logistics teams.
+          </p>
+          <div class="mt-auto">
+            <span class="skill-tag">Django</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">PostgreSQL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="feature-card">
+          <div class="d-flex justify-content-between mb-3">
+            <h4 class="fw-bold">WhatsApp Intent Chatbot</h4>
+            <i class="fas fa-robot fa-lg" style="color: var(--accent);"></i>
+          </div>
+          <p class="text-muted mb-4">
+            An automated agent using WhatsApp Business APIs and a custom intent detection engine, built at EventGraphia to classify user queries and automate support.
+          </p>
+          <div class="mt-auto">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">NLP</span>
+            <span class="skill-tag">Webhooks</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="feature-card">
+          <div class="d-flex justify-content-between mb-3">
+            <h4 class="fw-bold">Data Copy Agent</h4>
+            <i class="fas fa-shield-alt fa-lg" style="color: var(--accent);"></i>
+          </div>
+          <p class="text-muted mb-4">
+            Fault-tolerant desktop application for secure data transfer with checksum validation, built at EventGraphia for duplication checks and missing data detection.
+          </p>
+          <div class="mt-auto">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Desktop App</span>
+            <span class="skill-tag">Automation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="feature-card">
+          <div class="d-flex justify-content-between mb-3">
+            <h4 class="fw-bold">Booking System API</h4>
+            <i class="fas fa-server fa-lg" style="color: var(--accent);"></i>
+          </div>
+          <p class="text-muted mb-4">
+            Robust API collection for movie info and ticketing. Automated linting and deployment to AWS using GitHub Actions.
+          </p>
+          <div class="mt-auto">
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">CI/CD</span>
+            <span class="skill-tag">FastAPI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <h2 class="fw-bold mb-4">Let's build something great.</h2>
+    <div class="d-flex justify-content-center gap-3 mb-5">
+      <a href="mailto:ronakkhandlwl@gmail.com" class="btn btn-custom">Get in Touch</a>
+      <a href="/ronaks_resume.pdf" download class="btn btn-outline-custom">Download Resume</a>
+    </div>
+    
+    <div class="social-links mb-3">
+      <a href="https://linkedin.com/in/r0n4k" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/ronakkhandlwl" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+      <a href="https://blog.ronakbuilds.com" target="_blank" class="social-icon"><i class="fas fa-rss"></i></a>
+    </div>
+    <p class="text-muted small">© 2025 Ronak Khandelwal. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
