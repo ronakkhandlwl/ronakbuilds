@@ -1,62 +1,37 @@
-# Astro Starter Kit: Blog
+# Ronak's Blog
 
-```sh
-npm create astro@latest -- --template blog
-```
+Welcome to my personal blog where I share insights, tutorials, and thoughts on technology and artificial intelligence.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🚀 About
 
-Features:
+Here you'll find articles related to:
+- **AI & Machine Learning** - Latest developments, tools, and practical implementations
+- **Software Development** - Tutorials, best practices, and coding tips
+- **Tech Trends** - Analysis and perspectives on emerging technologies
+- **Personal Projects** - Behind-the-scenes look at what I'm building
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+## 🌐 Live Site
 
-## 🚀 Project Structure
+Visit the blog at [blog.ronakbuilds.com](https://blog.ronakbuilds.com)
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🛠️ Built With
 
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
+- **Astro** - Modern static site generator
+- **Markdown** - For writing content
+- **Vercel** - Deployment and hosting
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 📝 Recent Posts
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Check out my latest articles on the [blog homepage](https://blog.ronakbuilds.com)!
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+## 🤝 Connect
 
-Any static assets, like images, can be placed in the `public/` directory.
+- GitHub: [@ronakkhandlwal](https://github.com/ronakkhandlwal)
+- Twitter: [@ronakkhandlwl](https://twitter.com/ronakkhandlwl)
+- LinkedIn: [Ronak Khandelwal](https://linkedin.com/in/ronakkhandelwal)
 
-## 🧞 Commands
+## 📄 License
 
-All commands are run from the root of the project, from a terminal:
+All blog content is © 2025 Ronak Khandelwal. Code is available under the MIT License.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+---
