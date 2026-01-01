@@ -251,6 +251,78 @@
       color: var(--accent); 
     }
 
+    /* --- Blog Slider Styles --- */
+.blog-slider-wrapper {
+  width: 100%;
+  position: relative;
+  /* Adds a subtle fade effect on the edges */
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  padding: 20px 0;
+}
+
+.blog-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  /* The animation moves the track to the left */
+  animation: scroll 40s linear infinite;
+}
+
+/* Pause animation on hover so users can click */
+.blog-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  /* We move -50% because JS will duplicate the items. 
+     Moving -50% means we've shown the first set and are now seamlessly at the start of the clone. */
+  100% { transform: translateX(-50%); }
+}
+
+.blog-card {
+  width: 300px; /* Fixed width for consistent slider */
+  height: 280px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+  flex-shrink: 0; /* Prevents squishing */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative; /* For the stretched link */
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(139, 94, 52, 0.1);
+  border-color: var(--accent);
+}
+
+.blog-date {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.blog-card-content p {
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limit text lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.blog-card-footer {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
     /* ============================================
        RESPONSIVE STYLES
        ============================================ */
@@ -429,7 +501,7 @@
 
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="#">Ronak.</a>
+    <a class="navbar-brand" href="#">Ronak Khandelwal.</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -508,7 +580,7 @@
             <span class="skill-tag">Django</span>
             <span class="skill-tag">Flask</span>
             <span class="skill-tag">React</span>
-            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Astro</span>
             <span class="skill-tag">Bootstrap</span>
           </div>
         </div>
@@ -522,7 +594,6 @@
             <span class="skill-tag">PostgreSQL</span>
             <span class="skill-tag">MongoDB</span>
             <span class="skill-tag">Redis</span>
-            <span class="skill-tag">TimescaleDB</span>
             <span class="skill-tag">Celery</span>
             <span class="skill-tag">AWS</span>
             <span class="skill-tag">Docker</span>
@@ -549,6 +620,66 @@
   </div>
 </section>
 
+
+<section id="blogs" style="background-color: var(--bg-light); overflow: hidden;">
+    <div class="container mb-4">
+        <div class="d-flex justify-content-between align-items-end">
+        <h2 class="section-title mb-0">Top Blog Posts</h2>
+        <a href="https://blog.ronakbuilds.com" target="_blank" class="text-muted text-decoration-none small fw-bold">
+            View All <i class="fas fa-arrow-right ms-1"></i>
+        </a>
+        </div>
+    </div>
+
+    <div class="blog-slider-wrapper">
+        <div class="blog-track" id="blogTrack">
+        
+        <div class="blog-card">
+            <div class="blog-card-content">
+            <span class="blog-date">Apr 06, 2025</span>
+            <h5 class="fw-bold mt-2 mb-3">Create MCP Server to Fetch the Latest News</h5>
+            <p class="text-muted small mb-0">Learn how to build a Model Context Protocol server that fetches real-time news headlines and integrates with Claude Desktop application</p>
+            <a href="https://blog.ronakbuilds.com/blog/mcp-news-server" target="_blank" class="stretched-link"></a>
+            </div>
+            <div class="blog-card-footer">
+            <span class="skill-tag mb-0">AI</span>
+            <span class="skill-tag mb-0">MCP</span>
+            <span class="skill-tag mb-0">Python</span>
+            </div>
+        </div>
+
+        <div class="blog-card">
+            <div class="blog-card-content">
+            <span class="blog-date">Dec 28, 2025</span>
+            <h5 class="fw-bold mt-2 mb-3">Build and Deploy a Blog in 15 Minutes with Astro</h5>
+            <p class="text-muted small mb-0">A complete guide to creating a blazing-fast blog with Astro and deploying it to Vercel in under 15 minutes</p>
+            <a href="https://blog.ronakbuilds.com/blog/astro-blog-tutorial" target="_blank" class="stretched-link"></a>
+            </div>
+            <div class="blog-card-footer">
+            <span class="skill-tag mb-0">Astro</span>
+            <span class="skill-tag mb-0">Vercel</span>
+            <span class="skill-tag mb-0">Blog</span>
+            </div>
+        </div>
+
+        <div class="blog-card">
+            <div class="blog-card-content">
+            <span class="blog-date">Aug 05, 2025</span>
+            <h5 class="fw-bold mt-2 mb-3">React: State Management 101</h5>
+            <p class="text-muted small mb-0">Understanding Context API vs Redux vs Zustand...</p>
+            <a href="https://blog.ronakbuilds.com/blog/react-state-management-101" target="_blank" class="stretched-link"></a>
+            </div>
+            <div class="blog-card-footer">
+            <span class="skill-tag mb-0">Frontend</span>
+            <span class="skill-tag mb-0">React</span>
+            </div>
+        </div>
+
+        </div>
+    </div>
+</section>
+
+
 <section id="work">
   <div class="container">
     <h2 class="section-title">Experience</h2>
@@ -560,9 +691,9 @@
           <h4 class="fw-bold">Software Development Engineer - I</h4>
           <h6 class="text-muted mb-3">EventGraphia · Gurugram</h6>
           <p class="text-muted">
-            Architected core internal systems including a CRM and Planner using Django & React. 
-            Built an AI-driven "Smart Assignment Engine" optimizing resource allocation based on 100+ parameters.
-            Led a team of 4 to reduce server load using Redis caching and queuing.
+            Architected core internal tools including a CRM, Planner and Quotation System using Python, Django & React. 
+            Integrated Webhooks and WhatsApp Business APIs to automate lead generation and follow-up.
+            Adopted caching and queuing techniques to reduce server load using Redis & Celery.
           </p>
         </div>
 
@@ -733,5 +864,21 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Logic for Infinite Loop
+    // This clones the blog cards and appends them to the end
+    // to create the illusion of an infinite scroll.
+    document.addEventListener("DOMContentLoaded", function() {
+      const track = document.getElementById('blogTrack');
+      const cards = Array.from(track.children);
+      
+      // Clone all cards and append them
+      cards.forEach(card => {
+        const clone = card.cloneNode(true);
+        // Ensure IDs are unique if you use them (not used here, but good practice)
+        track.appendChild(clone);
+      });
+    });
+  </script>
 </body>
 </html>
