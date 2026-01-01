@@ -24,11 +24,7 @@
       --border-color: #e5e0db;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -44,18 +40,14 @@
     }
 
     a { text-decoration: none; }
+    html { scroll-behavior: smooth; }
 
-    /* Smooth scrolling */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* --- Buttons --- */
+    /* Buttons */
     .btn-custom {
       background-color: var(--primary-dark);
       color: #fff;
-      padding: 10px 24px;
-      border-radius: 8px;
+      padding: 12px 28px; /* Slightly larger touch target */
+      border-radius: 50px; /* Modern Pill Shape */
       font-weight: 500;
       transition: all 0.3s ease;
       border: 1px solid var(--primary-dark);
@@ -72,8 +64,8 @@
       background-color: transparent;
       color: var(--primary-dark);
       border: 1px solid var(--primary-dark);
-      padding: 10px 24px;
-      border-radius: 8px;
+      padding: 12px 28px;
+      border-radius: 50px;
       font-weight: 500;
       transition: all 0.3s ease;
       display: inline-block;
@@ -83,42 +75,22 @@
       color: #fff;
     }
 
-    /* --- Navbar --- */
+    /* Navbar */
     .navbar {
-      background: rgba(250, 247, 244, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(250, 247, 244, 0.90);
+      backdrop-filter: blur(12px);
       padding: 16px 0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.05);
     }
-    .navbar-brand {
-      font-weight: 700;
-      font-size: 1.5rem;
-      letter-spacing: -0.5px;
-      color: var(--primary-dark);
-    }
-    .nav-link {
-      color: var(--primary-dark);
-      font-weight: 500;
-      margin-left: 20px;
-      transition: color 0.3s ease;
-    }
-    .nav-link:hover { 
-      color: var(--accent); 
-    }
+    .navbar-brand { font-weight: 700; font-size: 1.5rem; letter-spacing: -0.5px; }
+    .nav-link { color: var(--primary-dark); font-weight: 500; margin-left: 20px; transition: color 0.3s ease; }
+    .nav-link:hover { color: var(--accent); }
+    .navbar-toggler { border: none; padding: 0; }
+    .navbar-toggler:focus { box-shadow: none; }
 
-    .navbar-toggler {
-      border: none;
-      padding: 8px;
-    }
-    .navbar-toggler:focus {
-      box-shadow: none;
-    }
-
-    /* --- Sections --- */
-    section {
-      padding: 80px 0;
-    }
-
+    /* General Sections */
+    section { padding: 80px 0; }
+    
     .section-title {
       font-weight: 700;
       margin-bottom: 2rem;
@@ -127,15 +99,33 @@
       font-size: 2rem;
     }
     .section-title::after {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 3px;
-      background: var(--accent);
-      margin-top: 8px;
+      content: ''; display: block; width: 40px; height: 3px; background: var(--accent); margin-top: 8px;
     }
 
-    /* --- Cards --- */
+    /* Hero Section Specifics */
+    .hero-section {
+      min-height: 100vh; /* Fallback */
+      min-height: 100dvh; /* Dynamic height for mobile browsers */
+      display: flex;
+      align-items: center;
+      padding-top: 80px; /* Offset for fixed navbar */
+      padding-bottom: 40px;
+      background: radial-gradient(circle at 50% 50%, #ffffff 0%, #faf7f4 100%);
+    }
+
+    .hero-badge {
+        display: inline-block;
+        background-color: rgba(139, 94, 52, 0.1);
+        color: var(--accent);
+        padding: 8px 16px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Cards & Timeline (Existing styles) */
     .feature-card {
       background: var(--bg-surface);
       border-radius: 16px;
@@ -149,8 +139,6 @@
       box-shadow: 0 12px 30px rgba(139, 94, 52, 0.1);
       border-color: var(--accent);
     }
-
-    /* --- Skills Tags --- */
     .skill-tag {
       background: rgba(139, 94, 52, 0.1);
       color: var(--accent);
@@ -162,340 +150,80 @@
       margin-bottom: 8px;
       display: inline-block;
     }
-
-    /* --- Timeline (Experience) --- */
-    .timeline-item {
-      border-left: 2px solid var(--border-color);
-      padding-left: 30px;
-      position: relative;
-      margin-bottom: 40px;
-    }
+    .timeline-item { border-left: 2px solid var(--border-color); padding-left: 30px; position: relative; margin-bottom: 40px; }
     .timeline-item::before {
-      content: '';
-      width: 12px;
-      height: 12px;
-      background: var(--accent);
-      border-radius: 50%;
-      position: absolute;
-      left: -7px;
-      top: 5px;
+      content: ''; width: 12px; height: 12px; background: var(--accent); border-radius: 50%;
+      position: absolute; left: -7px; top: 5px;
     }
-    .timeline-date {
-      font-size: 0.9rem;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 5px;
-      display: block;
+    .timeline-date { font-size: 0.9rem; color: var(--accent); font-weight: 600; margin-bottom: 5px; display: block; }
+    .achievement-item { display: flex; align-items: center; margin-bottom: 15px; }
+    .achievement-icon {
+      width: 40px; height: 40px; background: rgba(139, 94, 52, 0.1); color: var(--accent);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0;
     }
     
-    /* --- Achievements --- */
-    .achievement-item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-    .achievement-icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(139, 94, 52, 0.1);
-      color: var(--accent);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 15px;
-      flex-shrink: 0;
-    }
+    /* Footer & Blog */
+    footer { border-top: 1px solid var(--border-color); margin-top: 80px; padding: 40px 0; text-align: center; }
+    .social-icon { font-size: 1.5rem; color: var(--primary-dark); margin: 0 10px; transition: color 0.3s; }
+    .social-icon:hover { color: var(--accent); }
+    
+    /* Blog Slider CSS */
+    .blog-slider-wrapper { width: 100%; position: relative; overflow: hidden; padding: 20px 0; mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); }
+    .blog-track { display: flex; gap: 24px; width: max-content; animation: scroll 40s linear infinite; }
+    .blog-track:hover { animation-play-state: paused; }
+    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .blog-card { width: 300px; height: 280px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.5rem; flex-shrink: 0; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s ease; position: relative; }
+    .blog-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(139, 94, 52, 0.1); border-color: var(--accent); }
+    .blog-date { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .blog-card-content p { line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .blog-card-footer { padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.05); }
 
-    /* --- Hero Section --- */
-    .hero-section {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 100px;
-      padding-bottom: 60px;
-    }
 
-    .stats-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-top: 2rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border-color);
-    }
+    /* --- NEW MOBILE STYLES & MEDIA QUERIES --- */
 
-    .stat-item {
-      flex: 0 1 auto;
-    }
-
-    .stat-item h2 {
-      font-size: 2rem;
-      margin-bottom: 0;
-    }
-
-    /* --- Footer --- */
-    footer {
-      border-top: 1px solid var(--border-color);
-      margin-top: 80px;
-      padding: 40px 0;
-      text-align: center;
-    }
-    .social-icon {
-      font-size: 1.5rem;
-      color: var(--primary-dark);
-      margin: 0 10px;
-      transition: color 0.3s;
-    }
-    .social-icon:hover { 
-      color: var(--accent); 
-    }
-
-    /* --- Blog Slider Styles --- */
-.blog-slider-wrapper {
-  width: 100%;
-  position: relative;
-  /* Adds a subtle fade effect on the edges */
-  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-  padding: 20px 0;
-}
-
-.blog-track {
-  display: flex;
-  gap: 24px;
-  width: max-content;
-  /* The animation moves the track to the left */
-  animation: scroll 40s linear infinite;
-}
-
-/* Pause animation on hover so users can click */
-.blog-track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  /* We move -50% because JS will duplicate the items. 
-     Moving -50% means we've shown the first set and are now seamlessly at the start of the clone. */
-  100% { transform: translateX(-50%); }
-}
-
-.blog-card {
-  width: 300px; /* Fixed width for consistent slider */
-  height: 280px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  padding: 1.5rem;
-  flex-shrink: 0; /* Prevents squishing */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  position: relative; /* For the stretched link */
-}
-
-.blog-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(139, 94, 52, 0.1);
-  border-color: var(--accent);
-}
-
-.blog-date {
-  font-size: 0.8rem;
-  color: var(--accent);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.blog-card-content p {
-  line-height: 1.4;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* Limit text lines */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.blog-card-footer {
-  padding-top: 1rem;
-  border-top: 1px solid rgba(0,0,0,0.05);
-}
-
-    /* ============================================
-       RESPONSIVE STYLES
-       ============================================ */
-
-    /* Large devices (desktops, 992px and up) */
-    @media (max-width: 1199.98px) {
-      .hero-section h1 {
-        font-size: 3rem;
-      }
-    }
-
-    /* Medium devices (tablets, 768px to 991px) */
     @media (max-width: 991.98px) {
-      .navbar {
-        padding: 12px 0;
-      }
-
-      .nav-link {
-        margin-left: 0;
-        padding: 8px 0;
-      }
-
-      .navbar-nav {
-        padding-top: 1rem;
-      }
-
-      .navbar-nav .btn-custom {
-        margin-top: 1rem;
-        width: 100%;
-        text-align: center;
-      }
-
-      .hero-section {
-        padding-top: 80px;
-        min-height: auto;
-      }
-
-      .hero-section h1 {
-        font-size: 2.5rem;
-      }
-
-      .stats-row {
-        gap: 1.5rem;
-        justify-content: space-between;
-      }
-
-      .stat-item h2 {
-        font-size: 1.75rem;
-      }
-
-      section {
-        padding: 60px 0;
-      }
-
-      .section-title {
-        font-size: 1.75rem;
-      }
-
-      .timeline-item {
-        padding-left: 25px;
-      }
+      .navbar-nav { padding-top: 1rem; background: var(--bg-light); padding-bottom: 1rem; }
+      .nav-link { margin-left: 0; padding: 10px 0; }
+      .hero-section { padding-top: 100px; text-align: center; }
     }
 
-    /* Small devices (phones, 576px to 767px) */
-    @media (max-width: 767.98px) {
-      .hero-section h1 {
-        font-size: 2rem;
-        line-height: 1.2;
+    @media (max-width: 575.98px) {
+      /* Hero Section Mobile Optimization */
+      .hero-section {
+        padding-top: 90px;
+        padding-bottom: 20px;
+        align-items: flex-start; /* Moves text higher up */
       }
-
+      
+      .hero-section h1 {
+        font-size: 2.25rem; /* Large but fits screen */
+        line-height: 1.2;
+        margin-bottom: 1rem !important;
+      }
+      
       .hero-section .lead {
         font-size: 1rem;
+        margin-bottom: 2rem !important;
       }
 
-      .stats-row {
+      /* Better Button Handling on Mobile */
+      .hero-buttons {
+        display: flex;
         flex-direction: column;
-        gap: 1rem;
-      }
-
-      .stat-item {
-        text-align: center;
-      }
-
-      .section-title {
-        font-size: 1.5rem;
-      }
-
-      section {
-        padding: 50px 0;
-      }
-
-      .feature-card {
-        padding: 1.5rem;
-      }
-
-      .btn-custom,
-      .btn-outline-custom {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-      }
-
-      footer h2 {
-        font-size: 1.5rem;
-      }
-
-      .timeline-item {
-        padding-left: 20px;
-        margin-bottom: 30px;
-      }
-
-      .timeline-item h4 {
-        font-size: 1.1rem;
-      }
-
-      .timeline-item h6 {
-        font-size: 0.95rem;
-      }
-    }
-
-    /* Extra small devices (phones, less than 576px) */
-    @media (max-width: 575.98px) {
-      .container {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-
-      .hero-section h1 {
-        font-size: 1.75rem;
-      }
-
-      .hero-section .display-3 {
-        font-size: 1.75rem;
-      }
-
-      .stat-item h2 {
-        font-size: 1.5rem;
-      }
-
-      .skill-tag {
-        font-size: 0.75rem;
-        padding: 5px 10px;
-      }
-
-      .achievement-icon {
-        width: 35px;
-        height: 35px;
-        font-size: 0.9rem;
-      }
-
-      .d-flex.gap-3 {
-        flex-direction: column;
-        gap: 0.75rem !important;
-      }
-
-      .d-flex.gap-3 .btn {
+        gap: 12px;
         width: 100%;
       }
-    }
-
-    /* Fix for button groups on mobile */
-    @media (max-width: 575.98px) {
-      .hero-section .btn-custom,
-      .hero-section .btn-outline-custom {
-        display: block;
+      
+      .btn-custom, .btn-outline-custom {
         width: 100%;
-        margin: 0 0 0.75rem 0;
+        margin: 0 !important; /* Reset margins to use Flex gap */
+        padding: 14px 20px; /* Easier to tap */
       }
 
-      .hero-section .btn-custom.me-3 {
-        margin-right: 0 !important;
-      }
+      /* Adjust container padding */
+      .container { padding-left: 24px; padding-right: 24px; }
     }
-  </style>
+</style>
 </head>
 <body>
 
@@ -507,8 +235,8 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav align-items-lg-center">
-        <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
         <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
         <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
         <li class="nav-item"><a class="nav-link" href="https://blog.ronakbuilds.com" target="_blank">Blog <i class="fas fa-external-link-alt fa-xs"></i></a></li>
         <li class="nav-item ms-lg-3">
@@ -522,38 +250,32 @@
 </nav>
 
 <section class="hero-section">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-10 text-center">
-        <span class="text-uppercase fw-bold" style="color: var(--accent); letter-spacing: 2px;">Software Engineer</span>
-        <h1 class="display-3 fw-bold my-4">Building scalable backends & <span style="color: var(--accent);">AI Agents</span>.</h1>
-        <p class="lead text-muted mb-5 mx-auto" style="max-width: 700px;">
-          I'm Ronak Khandelwal, an SDE architecting systems that serve thousands of users. 
-          Specializing in Python, Django, and modern AI tools like LangChain & n8n.
-        </p>
-        <div class="mb-5">
-          <a href="#projects" class="btn btn-custom me-3">View My Work</a>
-          <a href="https://blog.ronakbuilds.com" target="_blank" class="btn btn-outline-custom">Read My Blog</a>
-        </div>
-        
-        <div class="stats-row justify-content-center">
-          <div class="stat-item">
-            <h2 class="fw-bold mb-0">3+</h2>
-            <small class="text-muted">Years Exp.</small>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+          
+          <div class="hero-badge text-uppercase">
+            Software Engineer
           </div>
-          <div class="stat-item">
-            <h2 class="fw-bold mb-0">500+</h2>
-            <small class="text-muted">DSA Solved</small>
+  
+          <h1 class="display-3 fw-bold my-3">
+            Building scalable backends & <span style="color: var(--accent);">AI Agents</span>.
+          </h1>
+  
+          <p class="lead text-muted mb-5 mx-auto" style="max-width: 700px;">
+            I'm Ronak Khandelwal, an SDE architecting systems that serve thousands of users. 
+            Specializing in Python, Django, and modern AI tools like LangChain & n8n.
+          </p>
+  
+          <div class="hero-buttons d-flex justify-content-center gap-3">
+            <a href="#projects" class="btn btn-custom">View My Work</a>
+            <a href="https://blog.ronakbuilds.com" target="_blank" class="btn btn-outline-custom">Read My Blog</a>
           </div>
-          <div class="stat-item">
-            <h2 class="fw-bold mb-0">90%</h2>
-            <small class="text-muted">Optimization</small>
-          </div>
+  
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 <section>
   <div class="container">
@@ -620,7 +342,6 @@
   </div>
 </section>
 
-
 <section id="blogs" style="background-color: var(--bg-light); overflow: hidden;">
     <div class="container mb-4">
         <div class="d-flex justify-content-between align-items-end">
@@ -650,10 +371,24 @@
 
         <div class="blog-card">
             <div class="blog-card-content">
+            <span class="blog-date">Jan 01, 2026</span>
+            <h5 class="fw-bold mt-2 mb-3">Build Telegram Habit Tracker with n8n</h5>
+            <p class="text-muted small mb-0">Build a fully automated, interactive habit tracking system using Telegram bots, n8n workflows, and Google Sheets</p>
+            <a href="https://blog.ronakbuilds.com/blog/telegram-habit-tracker-n8n" target="_blank" class="stretched-link"></a>
+            </div>
+            <div class="blog-card-footer">
+            <span class="skill-tag mb-0">n8n</span>
+            <span class="skill-tag mb-0">Automation</span>
+            <span class="skill-tag mb-0">Telegram</span>
+            </div>
+        </div>
+
+        <div class="blog-card">
+            <div class="blog-card-content">
             <span class="blog-date">Dec 28, 2025</span>
             <h5 class="fw-bold mt-2 mb-3">Build and Deploy a Blog in 15 Minutes with Astro</h5>
             <p class="text-muted small mb-0">A complete guide to creating a blazing-fast blog with Astro and deploying it to Vercel in under 15 minutes</p>
-            <a href="https://blog.ronakbuilds.com/blog/astro-blog-tutorial" target="_blank" class="stretched-link"></a>
+            <a href="https://blog.ronakbuilds.com/blog/build-deploy-astro-blog" target="_blank" class="stretched-link"></a>
             </div>
             <div class="blog-card-footer">
             <span class="skill-tag mb-0">Astro</span>
@@ -662,23 +397,88 @@
             </div>
         </div>
 
-        <div class="blog-card">
-            <div class="blog-card-content">
-            <span class="blog-date">Aug 05, 2025</span>
-            <h5 class="fw-bold mt-2 mb-3">React: State Management 101</h5>
-            <p class="text-muted small mb-0">Understanding Context API vs Redux vs Zustand...</p>
-            <a href="https://blog.ronakbuilds.com/blog/react-state-management-101" target="_blank" class="stretched-link"></a>
-            </div>
-            <div class="blog-card-footer">
-            <span class="skill-tag mb-0">Frontend</span>
-            <span class="skill-tag mb-0">React</span>
-            </div>
-        </div>
-
         </div>
     </div>
 </section>
 
+<section id="projects">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-end mb-5 flex-wrap">
+      <h2 class="section-title mb-3 mb-md-0">Featured Projects</h2>
+      <a href="https://github.com/ronakkhandlwl" target="_blank" class="text-muted">View Github <i class="fas fa-arrow-right ms-1"></i></a>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="feature-card">
+          <div class="d-flex justify-content-between mb-3">
+            <h4 class="fw-bold">n8n Habit Tracker</h4>
+            <i class="fas fa-robot fa-lg" style="color: var(--accent);"></i>
+          </div>
+          <p class="text-muted mb-4">
+            Automated habit tracking system using n8n workflows, Telegram Bot APIs, and Google Sheets. Daily reminders with interactive buttons for seamless habit logging.
+          </p>
+          <div class="mt-auto">
+            <span class="skill-tag">n8n</span>
+            <span class="skill-tag">Telegram API</span>
+            <span class="skill-tag">Google Sheets</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="feature-card">
+          <div class="d-flex justify-content-between mb-3">
+            <h4 class="fw-bold">Internal CRM & Planner</h4>
+            <i class="fas fa-layer-group fa-lg" style="color: var(--accent);"></i>
+          </div>
+          <p class="text-muted mb-4">
+            A centralized dashboard for tracking booking stages and internal notes, built at EventGraphia. Streamlined operations for the sales and logistics teams.
+          </p>
+          <div class="mt-auto">
+            <span class="skill-tag">Django</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">PostgreSQL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="feature-card">
+          <div class="d-flex justify-content-between mb-3">
+            <h4 class="fw-bold">Data Copy Agent</h4>
+            <i class="fas fa-shield-alt fa-lg" style="color: var(--accent);"></i>
+          </div>
+          <p class="text-muted mb-4">
+            Fault-tolerant desktop application for secure data transfer with checksum validation, built at EventGraphia for duplication checks and missing data detection.
+          </p>
+          <div class="mt-auto">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Desktop App</span>
+            <span class="skill-tag">Automation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="feature-card">
+          <div class="d-flex justify-content-between mb-3">
+            <h4 class="fw-bold">Booking System API</h4>
+            <i class="fas fa-server fa-lg" style="color: var(--accent);"></i>
+          </div>
+          <p class="text-muted mb-4">
+            Robust API collection for movie info and ticketing. Automated linting and deployment to AWS using GitHub Actions.
+          </p>
+          <div class="mt-auto">
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">CI/CD</span>
+            <span class="skill-tag">FastAPI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="work">
   <div class="container">
@@ -761,85 +561,6 @@
             </div>
           </div>
 
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="container">
-    <div class="d-flex justify-content-between align-items-end mb-5 flex-wrap">
-      <h2 class="section-title mb-3 mb-md-0">Featured Projects</h2>
-      <a href="https://github.com/ronakkhandlwl" target="_blank" class="text-muted">View Github <i class="fas fa-arrow-right ms-1"></i></a>
-    </div>
-
-    <div class="row g-4">
-      <div class="col-md-6">
-        <div class="feature-card">
-          <div class="d-flex justify-content-between mb-3">
-            <h4 class="fw-bold">Internal CRM & Planner</h4>
-            <i class="fas fa-layer-group fa-lg" style="color: var(--accent);"></i>
-          </div>
-          <p class="text-muted mb-4">
-            A centralized dashboard for tracking booking stages and internal notes, built at EventGraphia. Streamlined operations for the sales and logistics teams.
-          </p>
-          <div class="mt-auto">
-            <span class="skill-tag">Django</span>
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">PostgreSQL</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="feature-card">
-          <div class="d-flex justify-content-between mb-3">
-            <h4 class="fw-bold">WhatsApp Intent Chatbot</h4>
-            <i class="fas fa-robot fa-lg" style="color: var(--accent);"></i>
-          </div>
-          <p class="text-muted mb-4">
-            An automated agent using WhatsApp Business APIs and a custom intent detection engine, built at EventGraphia to classify user queries and automate support.
-          </p>
-          <div class="mt-auto">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">NLP</span>
-            <span class="skill-tag">Webhooks</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="feature-card">
-          <div class="d-flex justify-content-between mb-3">
-            <h4 class="fw-bold">Data Copy Agent</h4>
-            <i class="fas fa-shield-alt fa-lg" style="color: var(--accent);"></i>
-          </div>
-          <p class="text-muted mb-4">
-            Fault-tolerant desktop application for secure data transfer with checksum validation, built at EventGraphia for duplication checks and missing data detection.
-          </p>
-          <div class="mt-auto">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Desktop App</span>
-            <span class="skill-tag">Automation</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="feature-card">
-          <div class="d-flex justify-content-between mb-3">
-            <h4 class="fw-bold">Booking System API</h4>
-            <i class="fas fa-server fa-lg" style="color: var(--accent);"></i>
-          </div>
-          <p class="text-muted mb-4">
-            Robust API collection for movie info and ticketing. Automated linting and deployment to AWS using GitHub Actions.
-          </p>
-          <div class="mt-auto">
-            <span class="skill-tag">AWS</span>
-            <span class="skill-tag">CI/CD</span>
-            <span class="skill-tag">FastAPI</span>
-          </div>
         </div>
       </div>
     </div>
