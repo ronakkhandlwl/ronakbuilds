@@ -258,6 +258,7 @@ Building this in n8n gave me complete control over the logic—handling custom r
 
 If you want to extend this system, here are some ideas:
 
+- [Deploy n8n on oracle cloud for free](/blog/host-n8n-on-oracle-cloud-free/)
 - Add weekly summary reports
 - Implement streak tracking
 - Create visualizations from your Google Sheets data
