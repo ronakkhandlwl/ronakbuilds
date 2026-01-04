@@ -168,10 +168,9 @@
     .social-icon:hover { color: var(--accent); }
     
     /* Blog Slider CSS */
-    .blog-slider-wrapper { width: 100%; position: relative; overflow: hidden; padding: 20px 0; mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); }
-    .blog-track { display: flex; gap: 24px; width: max-content; animation: scroll 40s linear infinite; }
-    .blog-track:hover { animation-play-state: paused; }
-    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .blog-slider-wrapper { width: 100%; position: relative; overflow: hidden; padding: 20px 0; mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); cursor: grab; user-select: none; }
+    .blog-slider-wrapper.dragging { cursor: grabbing; }
+    .blog-track { display: flex; gap: 24px; width: max-content; will-change: transform; }
     .blog-card { width: 300px; height: 280px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.5rem; flex-shrink: 0; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s ease; position: relative; }
     .blog-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(139, 94, 52, 0.1); border-color: var(--accent); }
     .blog-date { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -616,6 +615,7 @@
     // to create the illusion of an infinite scroll.
     document.addEventListener("DOMContentLoaded", function() {
       const track = document.getElementById('blogTrack');
+      const wrapper = document.querySelector('.blog-slider-wrapper');
       const cards = Array.from(track.children);
       
       // Clone all cards and append them
@@ -624,6 +624,110 @@
         // Ensure IDs are unique if you use them (not used here, but good practice)
         track.appendChild(clone);
       });
+
+      // Auto-scroll and manual drag/swipe functionality
+      let currentOffset = 0;
+      let isDragging = false;
+      let isMouseDown = false;
+      let startX;
+      let dragStartOffset;
+      let animationId;
+      let lastTime = performance.now();
+      const animationDuration = 40000; // 40 seconds for one full cycle (matches original)
+      let originalWidth = 0;
+
+      // Calculate original width after layout is ready
+      function initSlider() {
+        // Wait for layout to calculate
+        requestAnimationFrame(() => {
+          originalWidth = track.offsetWidth / 2;
+          // Start animation after width is calculated
+          lastTime = performance.now();
+          animate(lastTime);
+        });
+      }
+
+      function animate(currentTime) {
+        if (!isDragging && originalWidth > 0) {
+          const deltaTime = Math.min(currentTime - lastTime, 100); // Cap delta time
+          lastTime = currentTime;
+          
+          // Calculate scroll speed to match 40s duration
+          const pixelsPerSecond = originalWidth / (animationDuration / 1000);
+          const pixelsPerMs = pixelsPerSecond / 1000;
+          
+          // Auto-scroll
+          currentOffset -= pixelsPerMs * deltaTime;
+          
+          // Reset to 0 when we've scrolled exactly one set of cards (seamless loop)
+          if (currentOffset <= -originalWidth) {
+            currentOffset = 0;
+          }
+        }
+        
+        track.style.transform = `translateX(${currentOffset}px)`;
+        animationId = requestAnimationFrame(animate);
+      }
+
+      // Mouse events
+      wrapper.addEventListener('mousedown', (e) => {
+        isMouseDown = true;
+        isDragging = true;
+        wrapper.classList.add('dragging');
+        startX = e.pageX;
+        dragStartOffset = currentOffset;
+        e.preventDefault();
+      });
+
+      wrapper.addEventListener('mouseleave', () => {
+        if (isMouseDown) {
+          isMouseDown = false;
+          isDragging = false;
+          wrapper.classList.remove('dragging');
+        }
+      });
+
+      wrapper.addEventListener('mouseup', () => {
+        if (isMouseDown) {
+          isMouseDown = false;
+          isDragging = false;
+          wrapper.classList.remove('dragging');
+        }
+      });
+
+      wrapper.addEventListener('mousemove', (e) => {
+        if (!isMouseDown) return;
+        e.preventDefault();
+        const deltaX = e.pageX - startX;
+        currentOffset = dragStartOffset + deltaX * 1.5;
+      });
+
+      // Touch events for mobile
+      let touchStartX;
+      let touchStartOffset;
+
+      wrapper.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        wrapper.classList.add('dragging');
+        touchStartX = e.touches[0].pageX;
+        touchStartOffset = currentOffset;
+      }, { passive: true });
+
+      wrapper.addEventListener('touchend', () => {
+        if (isDragging) {
+          isDragging = false;
+          wrapper.classList.remove('dragging');
+        }
+      }, { passive: true });
+
+      wrapper.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const deltaX = e.touches[0].pageX - touchStartX;
+        currentOffset = touchStartOffset + deltaX * 1.5;
+      }, { passive: true });
+
+      // Initialize slider after cards are cloned
+      initSlider();
     });
   </script>
 </body>
